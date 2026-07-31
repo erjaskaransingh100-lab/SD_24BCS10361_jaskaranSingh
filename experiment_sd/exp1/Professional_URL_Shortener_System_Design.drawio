@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="Overview" id="0">
+    <mxGraphModel dx="1126" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;fontSize=20;fontStyle=1" value="URL SHORTENER SYSTEM DESIGN" vertex="1">
+          <mxGeometry height="30" width="350" x="220" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="fr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" value="Functional Requirements&#xa;• Create Short URL&#xa;• Redirect URL&#xa;• Unique Codes&#xa;• Custom Alias&#xa;• URL Expiry&#xa;• Click Analytics&#xa;• Delete URL" vertex="1">
+          <mxGeometry height="220" width="300" x="20" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nfr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;" value="Non Functional Requirements&#xa;• High Availability&#xa;• Low Latency&#xa;• Scalability&#xa;• Reliability&#xa;• Fault Tolerance&#xa;• Security (HTTPS)&#xa;• Durability" vertex="1">
+          <mxGeometry height="220" width="300" x="360" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ass" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;" value="Assumptions&#xa;100M URLs/month&#xa;Read:Write = 10:1&#xa;URL=500B&#xa;7-char Base62&#xa;Retention=5 years" vertex="1">
+          <mxGeometry height="150" width="300" x="20" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;" value="REST APIs&#xa;POST /api/v1/urls&#xa;GET /{shortCode}&#xa;GET /stats&#xa;DELETE /{shortCode}" vertex="1">
+          <mxGeometry height="150" width="300" x="360" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-47" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Client" vertex="1">
+          <mxGeometry height="50" width="120" x="300" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-48" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Load Balancer" vertex="1">
+          <mxGeometry height="50" width="160" x="280" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-49" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="URL Service" vertex="1">
+          <mxGeometry height="60" width="140" x="100" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-50" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Redirect Service" vertex="1">
+          <mxGeometry height="60" width="160" x="480" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-51" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="ID Generator&#xa;Base62" vertex="1">
+          <mxGeometry height="60" width="140" x="100" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-52" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Redis Cache" vertex="1">
+          <mxGeometry height="60" width="140" x="480" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-53" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;" value="URL Database&lt;div&gt;&lt;br&gt;urls(id, short_code, original_url, click_count)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="220" x="280" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-54" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;" value="Backup/Replica" vertex="1">
+          <mxGeometry height="60" width="220" x="280" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-55" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-47" target="F3-3tTY41k2QOeDKbv16-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-56" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-48" target="F3-3tTY41k2QOeDKbv16-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-57" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-48" target="F3-3tTY41k2QOeDKbv16-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-58" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-49" target="F3-3tTY41k2QOeDKbv16-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-59" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-51" target="F3-3tTY41k2QOeDKbv16-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-60" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-50" target="F3-3tTY41k2QOeDKbv16-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-61" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-52" target="F3-3tTY41k2QOeDKbv16-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-62" edge="1" parent="1" source="F3-3tTY41k2QOeDKbv16-53" target="F3-3tTY41k2QOeDKbv16-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F3-3tTY41k2QOeDKbv16-63" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Architecture&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="300" x="210" y="490" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Architecture" id="1">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Client" vertex="1" parent="1">
+          <mxGeometry x="320" y="20" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Load Balancer" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="URL Service" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Redirect Service" vertex="1" parent="1">
+          <mxGeometry x="500" y="200" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="ID Generator/Base62" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Redis Cache" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="URL Database" style="shape=cylinder;" vertex="1" parent="1">
+          <mxGeometry x="300" y="440" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Backup" style="shape=cylinder;" vertex="1" parent="1">
+          <mxGeometry x="300" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
